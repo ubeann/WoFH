@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">WoFH</string>
     <string name="find_the_best_workout_that_suits_you">Find the Best Workout that Suits You!</string>
+    <string name="please_sign_up_nto_join_us">Please sign up\nto join us</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="not_registered_yet">Not registered yet?</string>
+    <string name="hello_there">Hello, There!</string>
 </resources>

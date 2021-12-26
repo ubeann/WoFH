@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ui.register.RegisterActivity" >
+    tools:context=".ui.login.LoginActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,45 +18,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_bold"
-            android:text="@string/please_sign_up_nto_join_us"
+            android:text="@string/hello_there"
             android:textColor="@color/black"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintBottom_toTopOf="@id/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_chainStyle="packed"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="@string/full_name"
-            app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
-            app:startIconContentDescription="Text Fields"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintBottom_toTopOf="@+id/email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_chainStyle="packed">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             android:hint="@string/email_address"
             app:startIconDrawable="@drawable/ic_baseline_email_24"
             app:startIconContentDescription="Text Fields"
-            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintBottom_toTopOf="@+id/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +58,7 @@
             app:startIconContentDescription="Text Fields"
             app:endIconMode="password_toggle"
             app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintBottom_toTopOf="@+id/register_btn"
+            app:layout_constraintBottom_toTopOf="@+id/login_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_chainStyle="packed">
@@ -91,41 +71,41 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/register_btn"
+            android:id="@+id/login_btn"
             android:backgroundTint="#232F5B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/sign_up"
+            android:text="@string/login"
             android:textColor="@color/orange_500"
             app:layout_constraintTop_toBottomOf="@+id/password"
-            app:layout_constraintBottom_toTopOf="@+id/login_btn"
+            app:layout_constraintBottom_toTopOf="@+id/register_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
 
         <TextView
-            android:id="@+id/login_text"
+            android:id="@+id/register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/already_have_an_account"
+            android:text="@string/not_registered_yet"
             android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="@+id/login_btn"
-            app:layout_constraintBottom_toBottomOf="@+id/login_btn"
+            app:layout_constraintTop_toTopOf="@+id/register_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/register_btn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/login_btn"
+            app:layout_constraintEnd_toStartOf="@+id/register_btn"
             app:layout_constraintHorizontal_chainStyle="packed"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login_btn"
+            android:id="@+id/register_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/sign_up"
             android:textColor="@color/orange_500"
-            app:layout_constraintTop_toBottomOf="@+id/register_btn"
+            app:layout_constraintTop_toBottomOf="@+id/login_btn"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/login_text"
+            app:layout_constraintStart_toEndOf="@+id/register_text"
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/Widget.AppCompat.Button.Borderless"/>
 
