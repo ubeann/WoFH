@@ -13,7 +13,6 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     private val userKey = booleanPreferencesKey(KEY)
     private val nameKey = stringPreferencesKey(NAME_KEY)
     private val emailKey = stringPreferencesKey(EMAIL_KEY)
-    private val phoneKey = stringPreferencesKey(PHONE_KEY)
     private val createdKey = stringPreferencesKey(CREATED_KEY)
 
     fun getUserIsLogin(): Flow<Boolean> {
@@ -33,18 +32,16 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             User(
                 name = preferences[nameKey] ?: "Belum mengisi data",
                 email = preferences[emailKey] ?: "Belum mengisi data",
-                phone = preferences[phoneKey] ?: "Belum mengisi data",
                 createdAt = DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(preferences[createdKey], OffsetDateTime::from)
             )
         }
     }
 
-    suspend fun saveUserSetting(userName: String, userEmail: String, userPhone: String, userCreatedAt: OffsetDateTime) {
+    suspend fun saveUserSetting(userName: String, userEmail: String, userCreatedAt: OffsetDateTime) {
         dataStore.edit { preferences ->
             preferences[userKey] = true
             preferences[nameKey] = userName
             preferences[emailKey] = userEmail
-            preferences[phoneKey] = userPhone
             preferences[createdKey] = userCreatedAt.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
         }
     }
@@ -53,7 +50,6 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         private const val KEY = "${App.DATA_STORE_KEY}_already_login"
         private const val NAME_KEY = "${App.DATA_STORE_KEY}_name"
         private const val EMAIL_KEY = "${App.DATA_STORE_KEY}_email"
-        private const val PHONE_KEY = "${App.DATA_STORE_KEY}_phone"
         private const val CREATED_KEY = "${App.DATA_STORE_KEY}_created"
 
         @Volatile
