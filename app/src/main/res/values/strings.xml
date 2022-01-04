@@ -24,4 +24,9 @@
     <string name="calculate">Calculate</string>
     <string name="bmi">BMI : %f</string>
     <string name="status">Status : %s</string>
+    <string name="let_s_build_ideal_weight_for_your_body">Let\'s build ideal weight for your body :)</string>
+    <string name="kg">Kg</string>
+    <string name="current">Current</string>
+    <string name="goal">Goal</string>
+    <string name="edit">Edit</string>
 </resources>
