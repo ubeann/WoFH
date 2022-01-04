@@ -1,6 +1,7 @@
 package com.wofh.repository
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import com.wofh.database.AppDatabase
 import com.wofh.database.dao.UserDao
 import com.wofh.entity.User
@@ -16,6 +17,8 @@ class UserRepository(application: Application) {
         val db = AppDatabase.getDatabase(application)
         mUserDao = db.userDao()
     }
+
+    fun getUserByEmailLive(email: String): LiveData<User> = mUserDao.getUserByEmailLive(email)
 
     fun getUserByEmail(email: String): User = executorService.submit(Callable { mUserDao.getUserByEmail(email) }).get()
 

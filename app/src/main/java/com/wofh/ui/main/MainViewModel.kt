@@ -18,6 +18,8 @@ class MainViewModel(application: Application, private val preferences: UserPrefe
 
     fun getUserByEmail(email: String): User = mUserRepository.getUserByEmail(email)
 
+    fun getUserByEmailLive(email: String): LiveData<User> = mUserRepository.getUserByEmailLive(email)
+
     fun isRegistered(email: String): Boolean = mUserRepository.isEmailRegistered(email)
 
     fun isEmailValid(email: String): Boolean = !mUserRepository.isEmailRegistered(email)

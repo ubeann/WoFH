@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WoFH">
         <activity
+            android:name=".ui.edit_statistic.EditStatisticActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.body.BodyActivity"
             android:exported="true" />
         <activity

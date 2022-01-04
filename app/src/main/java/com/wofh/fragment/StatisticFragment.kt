@@ -1,6 +1,7 @@
 package com.wofh.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.wofh.App
 import com.wofh.databinding.FragmentStatisticBinding
 import com.wofh.entity.User
 import com.wofh.preferences.UserPreferences
+import com.wofh.ui.edit_statistic.EditStatisticActivity
 import com.wofh.ui.main.MainViewModel
 import com.wofh.ui.main.MainViewModelFactory
 import kotlin.math.abs
@@ -25,7 +27,6 @@ class StatisticFragment : Fragment() {
     private var _binding: FragmentStatisticBinding? = null
     private val binding get() = _binding!!
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = App.DATA_STORE_KEY)
-    private lateinit var user: User
     private lateinit var preferences: UserPreferences
     private lateinit var viewModel: MainViewModel
 
@@ -45,23 +46,44 @@ class StatisticFragment : Fragment() {
 
         viewModel.getUserSetting().observe(viewLifecycleOwner, { dataUser ->
             if (dataUser.email.isNotEmpty()) {
-                user =  viewModel.getUserByEmail(dataUser.email)
+                viewModel.getUserByEmailLive(dataUser.email).observe(viewLifecycleOwner, { user ->
+                    with(binding) {
+                        progressBar.progress =
+                            if ((user.weight != null) and (user.goal != null))
+                                (100.0 - abs(user.weight?.minus(user.goal!!)!!).div(
+                                    if (user.weight!! > user.goal!!)
+                                        user.weight!!
+                                    else
+                                        user.goal!!)*100).roundToInt()
+                            else
+                                100
+                        progressIndicator.text =
+                            if ((user.weight != null) and (user.goal != null))
+                                String.format("%s%%", (100.0 - abs(user.weight?.minus(user.goal!!)!!).div(
+                                    if (user.weight!! > user.goal!!)
+                                        user.weight!!
+                                    else
+                                        user.goal!!)*100).toString())
+                            else
+                                "0%"
 
-                with(binding) {
-                    progressBar.progress = if ((user.weight != null) and (user.goal != null)) (100.0 - abs(user.weight?.minus(user.goal!!)!!).div(user.weight!!)).roundToInt() else 100
-                    progressIndicator.text = if ((user.weight != null) and (user.goal != null)) String.format("%f%", (100.0 - abs(user.weight?.minus(user.goal!!)!!).div(user.weight!!))) else "0%"
+                        with(cardStatistic) {
+                            weight.text = if (user.weight != null) user.weight.toString() else "0"
+                            goal.text = if (user.goal != null) user.goal.toString() else "0"
+                        }
 
-                    with(cardStatistic) {
-                        weight.text = if (user.weight != null) user.weight.toString() else "0"
-                        goal.text = if (user.goal != null) user.goal.toString() else "0"
+                        if ((user.height != null) and (user.weight != null)) {
+                            showStatus(user.height, user.weight)
+                        }
                     }
-
-                    if ((user.height != null) and (user.weight != null)) {
-                        showStatus(user.height, user.weight)
-                    }
-                }
+                })
             }
         })
+
+        binding.btnEdit.setOnClickListener {
+            val intent = Intent(requireActivity(), EditStatisticActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {
