@@ -23,6 +23,7 @@ import com.wofh.R
 import com.wofh.databinding.FragmentProfileBinding
 import com.wofh.entity.User
 import com.wofh.preferences.UserPreferences
+import com.wofh.ui.body.BodyActivity
 import com.wofh.ui.login.LoginActivity
 import com.wofh.ui.main.MainViewModel
 import com.wofh.ui.main.MainViewModelFactory
@@ -97,9 +98,18 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.btnBody.setOnClickListener {
+            closeKeyboard()
+
+            val intent = Intent(requireActivity(), BodyActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLogout.setOnClickListener {
             closeKeyboard()
+
             viewModel.forgetUserLogin(true)
+
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             finishAffinity(requireActivity())
             startActivity(intent)

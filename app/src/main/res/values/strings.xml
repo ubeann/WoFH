@@ -17,4 +17,11 @@
     <string name="old_password">Old Password</string>
     <string name="new_password">New Password</string>
     <string name="change_password">Change Password</string>
+    <string name="my_body">My Body</string>
+    <string name="calculate_your_body_mass_index_bmi">Calculate your Body Mass Index (BMI)</string>
+    <string name="weight_kg">Weight (Kg)</string>
+    <string name="height_cm">Height (Cm)</string>
+    <string name="calculate">Calculate</string>
+    <string name="bmi">BMI : %f</string>
+    <string name="status">Status : %s</string>
 </resources>

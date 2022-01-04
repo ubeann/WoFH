@@ -21,6 +21,9 @@ class RegisterViewModel(application: Application, private val preferences: UserP
             name = userName,
             email = userEmail,
             password = AESEncryption.encrypt(userPassword),
+            goal = null,
+            height = null,
+            weight = null,
             createdAt = userCreatedAt
         )
         mUserRepository.insert(user)

@@ -32,6 +32,9 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             User(
                 name = preferences[nameKey] ?: "Belum mengisi data",
                 email = preferences[emailKey] ?: "Belum mengisi data",
+                goal = null,
+                height = null,
+                weight = null,
                 createdAt = DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(preferences[createdKey], OffsetDateTime::from)
             )
         }
