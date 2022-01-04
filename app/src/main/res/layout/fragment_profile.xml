@@ -1,14 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
     tools:context=".fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
+<!--    <androidx.appcompat.widget.AppCompatImageButton-->
+<!--        android:id="@+id/btn_back"-->
+<!--        android:backgroundTint="@color/orange_200"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:src="@drawable/ic_baseline_arrow_back_ios_24"-->
+<!--        android:tint="@color/black"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/title"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/title"-->
+<!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="20dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/profile"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_body"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_body"
+        android:backgroundTint="@color/orange_200"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_body"
+        android:tint="@color/orange_700"
+        app:layout_constraintTop_toTopOf="@id/btn_logout"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_logout"
+        app:layout_constraintStart_toEndOf="@+id/title"
+        app:layout_constraintEnd_toStartOf="@+id/btn_logout"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_logout"
+        android:backgroundTint="@color/orange_200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_baseline_logout_24"
+        android:tint="#F05454"
+        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintStart_toEndOf="@+id/btn_body"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/profile_picture"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/full_name"
+        app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
+        app:startIconContentDescription="Text Fields"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/email_address"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconContentDescription="Text Fields"
+        app:layout_constraintTop_toBottomOf="@+id/input_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:backgroundTint="#232F5B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/save"
+        android:textColor="@color/orange_500"
+        app:layout_constraintTop_toBottomOf="@+id/input_email"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_old_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/old_password"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:startIconContentDescription="Text Fields"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_new_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/new_password"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:startIconContentDescription="Text Fields"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@+id/input_old_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_password"
+        android:backgroundTint="#232F5B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/change_password"
+        android:textColor="@color/orange_500"
+        app:layout_constraintTop_toBottomOf="@+id/input_new_password"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
