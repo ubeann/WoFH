@@ -13,7 +13,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputLayout
 import com.wofh.App
-import com.wofh.MainActivity
+import com.wofh.ui.main.MainActivity
 import com.wofh.databinding.ActivityLoginBinding
 import com.wofh.preferences.UserPreferences
 import com.wofh.ui.register.RegisterActivity

@@ -12,8 +12,8 @@ interface UserDao {
     fun update(user: User)
 
     @Query("SELECT * from user WHERE email = :email ORDER BY id ASC LIMIT 1")
-    suspend fun getUserByEmail(email: String): User
+    fun getUserByEmail(email: String): User
 
     @Query("SELECT EXISTS (SELECT * from user WHERE email = :email)")
-    suspend fun isEmailRegistered(email: String): Boolean
+    fun isEmailRegistered(email: String): Boolean
 }

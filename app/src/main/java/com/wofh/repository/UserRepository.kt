@@ -4,7 +4,7 @@ import android.app.Application
 import com.wofh.database.AppDatabase
 import com.wofh.database.dao.UserDao
 import com.wofh.entity.User
-import kotlinx.coroutines.runBlocking
+import java.util.concurrent.Callable
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -17,9 +17,9 @@ class UserRepository(application: Application) {
         mUserDao = db.userDao()
     }
 
-    fun getUserByEmail(email: String): User = runBlocking { mUserDao.getUserByEmail(email) }
+    fun getUserByEmail(email: String): User = executorService.submit(Callable { mUserDao.getUserByEmail(email) }).get()
 
-    fun isEmailRegistered(email: String): Boolean = runBlocking { mUserDao.isEmailRegistered(email) }
+    fun isEmailRegistered(email: String): Boolean = executorService.submit(Callable { mUserDao.isEmailRegistered(email) }).get()
 
     fun insert(user: User) {
         executorService.execute { mUserDao.insert(user) }
