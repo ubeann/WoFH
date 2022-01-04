@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/statistic_fragment"
+        android:name="com.wofh.fragment.StatisticFragment"
+        android:label="@string/statistic"
+        tools:layout="@layout/fragment_statistic">
+        <action
+            android:id="@+id/action_maps_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.wofh.fragment.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_fragment_to_maps_fragment"
+            app:destination="@id/statistic_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.wofh.fragment.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+</navigation>
