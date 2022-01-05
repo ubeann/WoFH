@@ -34,4 +34,10 @@
     <string name="current_height_cm">Current Height (Cm)</string>
     <string name="set_your_data_to_help_statistic_your_body">Set your data to help statistic your body</string>
     <string name="goal_weight_kg">Goal Weight (Kg)</string>
+    <string name="home_title">Let’s Find The Best Workout That Suits You!</string>
+    <string name="all">All</string>
+    <string name="bulk">Bulk</string>
+    <string name="cut">Cut</string>
+    <string name="recomp">Recomp</string>
+    <string name="diet">Diet</string>
 </resources>
